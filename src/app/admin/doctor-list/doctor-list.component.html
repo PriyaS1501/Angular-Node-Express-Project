@@ -1,0 +1,90 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>List of Doctors</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-outline-success btn-sm " routerLink="/admin/dashboard"
+                        style="float: right;"><i class="fa fa-arrow-circle-left"></i>
+                        Back to Dashboard</button>
+                    <button class="btn btn-secondary btn-sm " routerLink="/admin/add"><i class="fa fa-plus"></i> Add
+                        Doctor</button>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <input type="text" name="search" class="form-control search" placeholder="Search..."
+                        [(ngModel)]="term">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive doctor-list">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th (click)="changeOrder('name')">Name <i class="fa fa-sort"></i></th>
+                                    <th>Qualification</th>
+                                    <th>Speciality</th>
+                                    <th>Experience</th>
+                                    <th>About</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Centre</th>
+                                    <th>OPDTime</th>
+                                    <th>OPDDays</th>
+                                    <th>Gender</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let d of doctorsData | filter:term |orderBy: order :reverse | paginate: { itemsPerPage: 2, currentPage: p }">
+                                    <td>{{ (d._id.length>3)? (d._id | slice:20:24) +'...' :(d._id)}}</td>
+                                    <td>{{d.name | gender: d.gender}}</td>
+                                    <td>{{d.qualification}}</td>
+                                    <td>{{d.speciality}}</td>
+                                    <td>{{d.experience}}</td>
+                                    <td>{{ (d.about.length>40)? (d.about | slice:0:40)+'...':(d.about) }} </td> 
+                                    <td>{{d.email}}</td>
+                                    <td>{{d.contact}}</td>
+                                    <td>{{d.centre}}</td>
+                                    <td>{{d.OPDtimeAM}}  to {{d.OPDtimePM}} </td>
+                                    <td>{{d.OPDdays}}</td>
+                                    <td>{{d.gender}}</td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                            [routerLink]="['/admin/edit',d._id]">
+                                            <i class="fa fa-pencil-square-o"></i></button></td>
+                                    <td><button class="btn btn-outline-danger btn-sm" (click)="delete(d._id)">
+                                            <i class="fa fa-trash-o"></i></button></td>
+
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,204 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Edit Doctors Details !!</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-outline-success btn-sm " routerLink="/admin/doctorlist"
+                        style="float: right;"><i class="fa fa-arrow-circle-left"></i>
+                        Back to Dashboard</button>
+
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="edit-doctor-form">
+                    <form #editForm="ngForm" (ngSubmit)="putData(editForm.value)">
+                        <!--   -->
+                        <div class="row">
+                            <div class="col-md-5 m-2">
+                                <label for=""> Name :</label>
+                                <input type="text" name="name" class="form-control" #refname="ngModel"
+                                    [ngModel]="docObj?.name"
+                                    [ngClass]="{'is-invalid' : editForm.submitted && refname.errors}"
+                                    [pattern]="regularExpFullName" required>
+
+                                <div *ngIf="submitted && refname.errors?.['required']" class="invalid-feedback">
+                                    Doctor Name is required
+                                </div>
+
+                                <div *ngIf="submitted && refname.errors?.['pattern']" class="invalid-feedback">
+                                    Doctor name must be between 3 to 20 letters.
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for=""> Qualification :</label>
+                                <input type="text" name="qualification" class="form-control" #refqualification="ngModel"
+                                    [ngModel]="docObj?.qualification" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid':submitted && refqualification.errors}">
+
+                                <div *ngIf="submitted && refqualification.errors?.['required']"
+                                    class="invalid-feedback">
+                                    Qualification is required
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for=""> Speciality :</label>
+                                <input type="text" name="speciality" class="form-control" #refspeciality="ngModel"
+                                    [ngModel]="docObj?.speciality" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid':submitted && refspeciality.errors}">
+
+                                <div *ngIf="submitted && refspeciality.errors?.['required']" class="invalid-feedback">
+                                    Speciality is required
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">Experience (Years):</label>
+                                <input type="text" name="experience" class="form-control" #refexperience="ngModel"
+                                    [ngModel]="docObj?.experience" placeholder="Enter..." required
+                                    [pattern]="regularExpExperience"
+                                    [ngClass]="{'is-invalid' : submitted && editForm.errors}">
+                                <div *ngIf="submitted && refexperience.errors?.['required']" class="invalid-feedback">
+                                    Experience is required
+                                </div>
+                                <div *ngIf="submitted && refexperience.errors?.['pattern']" class="invalid-feedback">
+                                    Experience must be 2 digits
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="col-md-5 m-2">
+                                <label for=""> Email Id :</label>
+                                <input type="email" name="email" class="form-control" #refemail="ngModel"
+                                    [ngModel]="docObj?.email" placeholder="Enter..." required
+                                    [pattern]="regularExpEmail"
+                                    [ngClass]="{'is-invalid': submitted && refemail.errors}">
+                                <div *ngIf="submitted && refemail.errors?.['required']" class="invalid-feedback">
+                                    Email Id is Required
+                                </div>
+                                <div *ngIf="submitted && refemail.errors?.['pattern']" class="invalid-feedback">
+                                    Email id must be in format : "test111@test.com / test@test.com"
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">Contact Number :</label>
+                                <input type="text" name="contact" class="form-control" #refcontact="ngModel"
+                                    [ngModel]="docObj?.contact" placeholder="Enter..." required
+                                    [pattern]="regularExpContact"
+                                    [ngClass]="{'is-invalid' : submitted && refcontact.errors}">
+                                <div *ngIf="submitted && refcontact.errors?.['required']" class="invalid-feedback">
+                                    Contact Number is required
+                                </div>
+                                <div *ngIf="submitted && refcontact.errors?.['pattern']" class="invalid-feedback">
+                                    Contact number must be 10 digits
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">Centre :</label>
+                                <select name="centre" class="form-control" required #refcentre="ngModel"
+                                    [ngModel]="docObj?.centre"
+                                    [ngClass]="{'is-invalid' : submitted && refcentre.errors}">
+                                    <option>-Select Center-</option>
+                                    <option *ngFor="let c of centresData"> {{c.name}}</option>
+                                </select>
+
+                                <div *ngIf="submitted && refcentre.errors?.['required']" class="invalid-feedback">
+                                    This field is required
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">OPD Time :</label><br>
+                                <input type="number" name="OPDtimeAM" class="form-control num" #refOPDtime="ngModel"
+                                    [ngModel]="docObj?.OPDtimeAM" placeholder="AM" required
+                                    [ngClass]="{'is-invalid' : submitted && refOPDtime.errors}">
+                                <input type="number" name="OPDtimePM" class="form-control num" #refOPDtime="ngModel"
+                                    [ngModel]="docObj?.OPDtimePM" placeholder="PM" required
+                                    [ngClass]="{'is-invalid' : submitted && refOPDtime.errors}">
+                                <div *ngIf="submitted && refOPDtime.errors?.['required']" class="invalid-feedback">
+                                    OPD Timing is required
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">OPD Days :</label>
+                                <input type="text" name="OPDdays" class="form-control" #refOPDdays="ngModel"
+                                    [ngModel]="docObj?.OPDdays" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && refOPDdays.errors}">
+                                <div *ngIf="submitted && refOPDdays.errors?.['required']" class="invalid-feedback">
+                                    OPD Days is required
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="col-md-5 m-2">
+                                <label for="">Gender :</label><br>
+                                <input type="radio" name="gender" #refGender="ngModel" value="male"
+                                    [ngModel]="docObj?.gender"
+                                    [ngClass]="{'is-invalid': submitted && refGender.errors}"> Male
+                                <input type="radio" name="gender" #refGender="ngModel" value="female"
+                                    [ngModel]="docObj?.gender"
+                                    [ngClass]="{'is-invalid': submitted && refGender.errors}">
+                                Female
+
+                                <div *ngIf="submitted && refGender.errors?.['required']" class="invalid-feedback">
+                                    This field is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-10 m-2">
+                                <label for=""> About Doctor :</label>
+                                <textarea name="about" class="form-control" #refabout="ngModel"
+                                    [ngModel]="docObj?.about" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && refabout.errors}">
+                            </textarea>
+                                <div *ngIf="submitted && refabout.errors?.['required']" class="invalid-feedback">
+                                    Information about Doctor is required
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="col-md-5 m-2">
+                                <button class="btn btn-secondary" type="submit"> Submit</button>
+                            </div>
+
+                            <!-- [disabled]="editForm.invalid" -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

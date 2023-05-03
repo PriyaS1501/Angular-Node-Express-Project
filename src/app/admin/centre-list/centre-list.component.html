@@ -1,0 +1,75 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>List of Centres</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-outline-success btn-sm " routerLink="/admin/dashboard"
+                        style="float: right;"><i class="fa fa-arrow-circle-left"></i>
+                        Back to Dashboard</button>
+                    <button class="btn btn-secondary btn-sm " routerLink="/admin/addcentre"><i class="fa fa-plus"></i> Add
+                        Centre</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">                
+                <div class="col-md-12 ">
+                    <input type="text" name="search" class="form-control search" placeholder="Search..." [(ngModel)]="term">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive doctor-list">
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th  (click)="changeOrder('name')">Centre Name <i class="fa fa-sort"></i></th>
+                                    <th>Description</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of centresData  | filter:term |orderBy: order :reverse | paginate: { itemsPerPage: 2, currentPage: p }">
+                                    <td>{{ (c._id.length>3)? (c._id | slice:20:24) +'...' :(c._id)}}</td>
+                                    <td>{{c.name}}</td>
+                                    <td>{{ (c.description.length>40)? (c.description | slice:0:40)+'...':(c.description) }}</td>
+                                    <td>{{c.address}}</td>
+                                    <td>{{c.cemail}}</td>
+                                    <td>{{c.ccontact}}</td>
+                                    <td><button class="btn btn-outline-success btn-sm"
+                                            [routerLink]="['/admin/editcentre',c._id]">
+                                            <i class="fa fa-pencil-square-o"></i></button></td>
+                                    <td><button class="btn btn-outline-danger btn-sm" (click)="delete(c._id)">
+                                            <i class="fa fa-trash-o"></i></button></td>
+
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,68 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Our Doctors</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4 doctors" *ngFor="let d of doctorsData">
+
+                        <h3>Dr. {{d.name}}</h3>
+                        <div class="education">
+                            <p>{{d.qualification}}</p>
+                            <p>{{d.speciality}}</p>
+                        </div>
+                        <h4>Clinical OPD</h4>
+                        <h4>{{d.OPDtimeAM}} AM to {{d.OPDtimePM}} PM</h4>
+                        <ul>
+                            <li><a href="#" routerLink="/book-an-appointment">Get Appointment</a></li>
+
+                            <li><a href="#" data-bs-toggle="modal" [attr.data-bs-target]="'#Model'+d._id">View Profile</a></li>
+                            <!--(click)="open(content)" <li><a href="#" data-bs-toggle="modal" data-bs-target="#prasad">View Profile</a></li> -->
+
+                            <div class="modal fade" id="Model{{d._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title"><b>Dr. {{d.name}}</b></h3>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <hr>
+                                        <div class="modal-body">
+                                            <h6>Email Id : {{d.email}}</h6>
+                                            <h6>Contact No. : {{d.contact}}</h6>
+                                            <hr>
+                                            <h5>Qualification : {{d.qualification}}</h5>
+                                            <h5>Speciality : {{d.speciality}}</h5>
+                                            <h5>Experience : {{d.experience}} Years</h5>
+                                            <p>{{d.about}}</p>
+                                            <hr>
+                                            <h6>Clinical OPD timings : {{d.OPDtimeAM}}  to {{d.OPDtimePM}} </h6>
+                                            <h6>Clinical OPD Days : {{d.OPDdays}}</h6>
+                                            <h6>Clinical OPD Centre : {{d.centre}}</h6>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </ul>
+
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+</section>

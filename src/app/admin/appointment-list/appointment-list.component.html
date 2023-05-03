@@ -1,0 +1,77 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>List of Appointments</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-outline-success btn-sm " routerLink="/admin/dashboard"
+                    style="float: right;"><i class="fa fa-arrow-circle-left"></i>
+                    Back to Dashboard</button>                  
+                </div>
+            </div>
+            <hr>
+            <div class="row">                
+                <div class="col-md-12 ">
+                    <input type="text" name="search" class="form-control search" placeholder="Search..." [(ngModel)]="term">
+                </div>
+            </div>
+            
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive doctor-list">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Full Name</th>                                
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th (click)="changeOrder('doa')">Date of Appointment <i class="fa fa-sort"></i></th>
+                                <th>Gender</th>
+                                <th>Preferred Centre</th>
+                                <th>Preferred way of contacting</th>
+                                <th>Comment</th>
+                                <th>Action</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let a of appointmentsData | filter:term |orderBy: order :reverse | paginate: { itemsPerPage: 2, currentPage: p }">
+                                <td>{{ (a._id.length>3)? (a._id | slice:21:24) +'...' :(a._id)}}</td>
+                                <td>{{a.fname | gender : a.gender}}</td>                                                          
+                                <td>{{a.emailid}}</td>
+                                <td>{{a.acontact}}</td>
+                                <td>{{a.doa}}</td>
+                                <td>{{a.gender }}</td>
+                                <td>{{a.preferredcentre}}</td>
+                                <td>{{a.contactway}}</td>
+                                <td>{{a.comment}}</td>  
+                                <td><button class="btn btn-outline-danger btn-sm" (click)="delete(a._id)">
+                                    <i class="fa fa-trash-o"></i></button></td>
+                              
+                            </tr>
+
+                        </tbody>
+
+
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

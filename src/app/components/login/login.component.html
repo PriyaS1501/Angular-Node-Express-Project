@@ -1,0 +1,50 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Login</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="login-form">
+                    <form #loginForm="ngForm" (ngSubmit)="getData()">  
+                        <div class="row">
+                            <div class="col-md-10 m-2">
+                                <label>Username<sup>*</sup> :</label>
+                                <input type="text" placeholder="Enter..." #refUname="ngModel" name="username" class="form-control" [pattern]="uname"
+                                     [ngClass]="{'is-invalid' : loginForm.submitted && refUname.errors}" [(ngModel)]="uName"
+                                    required>
+                                <div *ngIf="loginForm.submitted && refUname.errors?.['required']" class="invalid-feedback">
+                                    Username is required
+                                </div>
+                
+                                <div *ngIf="loginForm.submitted && refUname.errors?.['pattern']" class="invalid-feedback">
+                                    Username must be between 3 to 20 characters.
+                                </div>
+                            </div>
+                            <div class="col-md-10 m-2">
+                                <label>Password<sup>*</sup> :</label>
+                                <input type="password" placeholder="Enter..." #refPwd="ngModel" name="password" class="form-control" [pattern]="upwd"
+                                     [ngClass]="{'is-invalid' : loginForm.submitted && refPwd.errors}" [(ngModel)]="uPass" required>
+                                <div *ngIf="loginForm.submitted && refPwd.errors?.['required']" class="invalid-feedback">
+                                    Password is required
+                                </div>
+                                <div *ngIf="loginForm.submitted && refPwd.errors?.['pattern']" class="invalid-feedback" >
+                                    Password must ne 8 to 20 characters and combination of number, letters or special characters
+                                </div>
+                            </div>
+                            <div class="col-md-10 m-2">
+                                <button type="submit" class="btn btn-secondary" (click)="getData()" [disabled]="!loginForm.valid">Login</button>
+                            </div>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

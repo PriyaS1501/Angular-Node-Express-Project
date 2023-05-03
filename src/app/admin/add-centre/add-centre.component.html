@@ -1,0 +1,109 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Add Centre</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-secondary btn-sm " routerLink="/admin/centrelist"><i class="fa fa-eye"></i>
+                        View Centres List</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="add-centre-form">
+                    <form (ngSubmit)="addData(centres.value)" [formGroup]="centres">
+
+                        <div class="row">
+                            <div class="col-md-5 m-2">
+                                <label for=""> Centre Name/Location<sup>*</sup> :</label>
+                                <input type="text" name="name" class="form-control" formControlName="name"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && centres.get('name').errors}">
+
+                                <div *ngIf="submitted && centres.get('name').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Centre Name is required
+                                </div>
+
+                                <div *ngIf="submitted && centres.get('name').errors?.['pattern']"
+                                    class="invalid-feedback">
+                                    Centre name must be between 3 to 20 letters.
+                                </div>
+
+                            </div>
+                            <div class="col-md-10 m-2">
+                                <label for=""> About Centre<sup>*</sup> :</label>
+                                <textarea name="description" class="form-control" formControlName="description"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && centres.get('description').errors}">
+                                </textarea>
+                                <div *ngIf="submitted && centres.get('description').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Information about Doctor is required
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-10 m-2">
+                                <label for=""> Address<sup>*</sup> :</label>
+                                <textarea name="address" class="form-control" formControlName="address"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && centres.get('address').errors}">
+                                </textarea>
+                                <div *ngIf="submitted && centres.get('address').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Address of centre is required
+                                </div>
+                             
+
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for=""> Email Id<sup>*</sup> :</label>
+                                <input type="email" name="cemail" class="form-control" formControlName="cemail"
+                                    placeholder="test111@test.com / test@test.com" required
+                                    [ngClass]="{'is-invalid': submitted && centres.get('cemail').errors}">
+                                <div *ngIf="submitted && centres.get('cemail').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Email Id is Required
+                                </div>
+                                <div *ngIf="submitted && centres.get('cemail').errors?.['pattern']"
+                                    class="invalid-feedback">
+                                    Email id must be in format : "test111@test.com / test@test.com"
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">Contact Number<sup>*</sup> :</label>
+                                <input type="text" name="ccontact" class="form-control" formControlName="ccontact"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && centres.get('ccontact').errors}">
+                                <div *ngIf="submitted && centres.get('ccontact').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Contact Number is required
+                                </div>
+                              
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <button class="btn btn-secondary" type="submit" [disabled]="centres.invalid"> Submit </button> 
+                            </div>
+
+                            <!--   -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

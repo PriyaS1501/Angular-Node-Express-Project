@@ -1,0 +1,105 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Edit Centre Details !!</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-outline-success btn-sm " routerLink="/admin/doctorlist"
+                        style="float: right;"><i class="fa fa-arrow-circle-left"></i>
+                        Back to Dashboard</button>
+                  
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="edit-doctor-form">
+                    <form #editForm="ngForm" (ngSubmit)="putData(editForm.value)">
+                        <!--   -->
+                        <div class="row">
+                            <div class="col-md-5 m-2">
+                                <label for=""> Name :</label>
+                                <input type="text" name="name" class="form-control" #refname="ngModel"
+                                    [ngModel]="centreObj?.name"
+                                    [ngClass]="{'is-invalid' : editForm.submitted && refname.errors}"
+                                    [pattern]="regularExpName" required>
+
+                                <div *ngIf="submitted && refname.errors?.['required']" class="invalid-feedback">
+                                    Centre Name is required
+                                </div>
+
+                                <div *ngIf="submitted && refname.errors?.['pattern']" class="invalid-feedback">
+                                    Centre name must be between 3 to 20 letters.
+                                </div>
+
+                            </div>
+                            <div class="col-md-10 m-2">
+                                <label for="">Description :</label>
+                                <textarea name="description" class="form-control" #refdescription="ngModel"
+                                    [ngModel]="centreObj?.description" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && refdescription.errors}">
+                            </textarea>
+                                <div *ngIf="submitted && refdescription.errors?.['required']" class="invalid-feedback">
+                                    Description of centre is required
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-10 m-2">
+                                <label for="">Address :</label>
+                                <textarea name="address" class="form-control" #refaddress="ngModel"
+                                    [ngModel]="centreObj?.address" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && refaddress.errors}">
+                            </textarea>
+                                <div *ngIf="submitted && refaddress.errors?.['required']" class="invalid-feedback">
+                                    Address of centre is required
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for=""> Email Id :</label>
+                                <input type="email" name="cemail" class="form-control" #refemail="ngModel"
+                                    [ngModel]="centreObj?.cemail" placeholder="Enter..." required
+                                    [pattern]="regularExpEmail"
+                                    [ngClass]="{'is-invalid': submitted && refemail.errors}">
+                                <div *ngIf="submitted && refemail.errors?.['required']" class="invalid-feedback">
+                                    Email Id is Required
+                                </div>
+                                <div *ngIf="submitted && refemail.errors?.['pattern']" class="invalid-feedback">
+                                    Email id must be in format : "test111@test.com / test@test.com"
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <label for="">Contact Number :</label>
+                                <input type="text" name="ccontact" class="form-control" #refcontact="ngModel"
+                                    [ngModel]="centreObj?.ccontact" placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && refcontact.errors}">
+                                <div *ngIf="submitted && refcontact.errors?.['required']" class="invalid-feedback">
+                                    Contact Number is required
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-5 m-2">
+                                <button class="btn btn-secondary" type="submit"> Update</button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

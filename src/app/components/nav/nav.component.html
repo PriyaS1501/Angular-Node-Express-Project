@@ -1,0 +1,58 @@
+<header>
+    <div class="container">
+        <div class="top-header">
+            <div class="row">
+                <div class="col-md-2" id="header-logo" routerLink="/home">
+                    <img src="../../../assets/images/eyecare-logo.png" alt="Eyecare Logo">
+                    <h3>EyeCare</h3>
+                </div>
+                <div class="col-md-8">
+                    <div class="menubar">
+                        <nav class="navbar navbar-expand-lg">
+                            <div class="container-fluid">
+
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                            <a class="nav-link" aria-current="page" href="#" routerLink="home">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" routerLink="about">About us</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" routerLink="centres">Our Centres</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" routerLink="doctors">Our Doctors</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" routerLink="book-an-appointment">Book an
+                                                Appointment</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-2 " *ngFor="let u of usersData">
+
+                    <div class="sign-in" *ngIf="flag"><button class="btn btn-secondary m-2 btn-sm " (click)="logIn()">
+                            Admin <i class="fa fa-sign-out"></i></button>
+                    </div>
+                    <div *ngIf="!flag" class="sign-out">
+                        <p> Welcome "<b>{{u.username}}</b>"</p><button class="btn btn-danger m-2 btn-sm" (click)="signOut()">
+                            SignOut <i class="fa fa-sign-out"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,53 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Our Centres</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="accordion accordion-flush centres-data" id="accordionFlushExample"
+                        *ngFor="let c of centresData">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button heading-lf" type="button" data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#Accordian'+c._id" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <h3> {{c.name}}</h3>
+                                </button>
+                            </h2>
+                            <div id="Accordian{{c._id}}" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="location">
+                                       
+                                        <p>{{c.description}}</p>
+                                        <ul class="loc1">
+                                            <li><i class="fa fa-map-marker"></i> {{c.address}}</li>
+                                            <li><i class="fa fa-envelope-o"></i> <a
+                                                    href="mailto:{{c.cemail}}">{{c.cemail}}</a></li>
+                                            <li><i class="fa fa-phone"></i>{{c.ccontact}}</li>
+                                        </ul>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>

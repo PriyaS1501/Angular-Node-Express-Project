@@ -1,0 +1,155 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Book An Appointment</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="apointment-form">
+                    <form (ngSubmit)="addData(bookappointment.value)" [formGroup]="bookappointment">
+
+                        <div class="row">
+                            <div class="col-md-5 m-2">
+                                <label for=""> Full Name<sup>*</sup> :</label>
+                                <input type="text" name="fname" class="form-control" formControlName="fname"
+                                    placeholder="John Smith" required
+                                    [ngClass]="{'is-invalid' : submitted && bookappointment.get('fname').errors}">
+
+                                <div *ngIf="submitted && bookappointment.get('fname').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Full Name is required
+                                </div>
+
+                                <div *ngIf="submitted && bookappointment.get('fname').errors?.['pattern']"
+                                    class="invalid-feedback">
+                                    Full name must be between 3 to 20 letters.
+                                </div>
+
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for=""> Email Id<sup>*</sup> :</label>
+                                <input type="email" name="emailid" class="form-control" formControlName="emailid"
+                                    placeholder="test111@test.com / test@test.com" required
+                                    [ngClass]="{'is-invalid': submitted && bookappointment.get('emailid').errors}">
+                                <div *ngIf="submitted && bookappointment.get('emailid').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Email Id is Required
+                                </div>
+                                <div *ngIf="submitted && bookappointment.get('emailid').errors?.['pattern']"
+                                    class="invalid-feedback">
+                                    Email id must be in format : "test111@test.com / test@test.com"
+                                </div>
+
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for="">Contact Number<small>(10 Digits)</small><sup>*</sup>  :</label>
+                                <input type="text" name="acontact" class="form-control" formControlName="acontact"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid' : submitted && bookappointment.get('acontact').errors}">
+                                <div *ngIf="submitted && bookappointment.get('acontact').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Contact Number is required
+                                </div>
+                                <div *ngIf="submitted && bookappointment.get('acontact').errors?.['pattern']"
+                                    class="invalid-feedback">
+                                    Mobile number is not 10 digit
+                                </div>
+
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for="">Date of Appointment<sup>*</sup> :</label>
+                                <input type="date" name="doa" class="form-control" formControlName="doa" required
+                                    [ngClass]="{'is-invalid': submitted && bookappointment.get('doa').errors}">
+                                <div *ngIf="submitted && bookappointment.get('doa').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Date of Birth is required
+                                </div>
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for="">City<sup>*</sup> :</label>
+                                <input type="text" name="city" class="form-control" formControlName="city"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid': submitted && bookappointment.get('city').errors}">
+                                <div *ngIf="submitted && bookappointment.get('city').errors?.['required']"
+                                    class="invalid-feedback">
+                                    City is required
+                                </div>
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for="">Gender<sup>*</sup> :</label><br>
+                                <input type="radio" name="gender" formControlName="gender" value="male"
+                                    [ngClass]="{'is-invalid': submitted && bookappointment.get('gender').errors}">
+                                Male
+                                <input type="radio" name="gender" formControlName="gender" value="female"
+                                    [ngClass]="{'is-invalid': submitted && bookappointment.get('gender').errors}">
+                                Female
+
+                                <div *ngIf="submitted && bookappointment.get('gender').errors?.['required']"
+                                    class="invalid-feedback">
+                                    This field is required
+                                </div>
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label>Preferred way of contacting<sup>*</sup></label><br>
+                                <div *ngFor="let item of _contactslist">
+                                    <div>
+                                        <input type="checkbox" name="{{item.name}}" (change)="onChange()" value="{{item.name}}"
+                                            [(ngModel)]="item.isselected" formControlName="contactway"
+                                            [ngClass]="{'is-invalid': submitted && bookappointment.get('contactway').errors}">
+                                        {{item.name}}
+                                    </div>
+
+                                </div>
+                                <div *ngIf="submitted && this.bookappointment.controls['contactway'].errors?.['required']"
+                                    class="invalid-feedback">
+                                    This field is required
+                                </div>
+                               
+
+
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <label for="">Select Preferred Center<sup>*</sup> :</label>
+                                <select name="preferredcentre" formControlName="preferredcentre" class="form-control"
+                                    required
+                                    [ngClass]="{'is-invalid': submitted && bookappointment.get('preferredcentre').errors}">
+                                    <option>-Select Center-</option>
+                                    <option *ngFor="let c of centresData">{{c.name}}</option>
+                                </select>
+                                <div *ngIf="submitted && bookappointment.get('preferredcentre').errors?.['required']"
+                                    class="invalid-feedback">
+                                    This field is required
+                                </div>
+
+                            </div>
+                            <div class="col-md-10 m-2">
+                                <label for=""> Comment<sup>*</sup> :</label>
+                                <textarea name="comment" class="form-control" formControlName="comment"
+                                    placeholder="Enter..." required
+                                    [ngClass]="{'is-invalid':submitted && bookappointment.get('comment').errors}">
+                                </textarea>
+                                <div *ngIf="submitted && bookappointment.get('comment').errors?.['required']"
+                                    class="invalid-feedback">
+                                    Comments are required
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-5 m-2">
+                                <button class="btn btn-secondary" type="submit" [disabled]="bookappointment.invalid">
+                                    Submit</button>
+                            </div>
+                        </div> <!-- row-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

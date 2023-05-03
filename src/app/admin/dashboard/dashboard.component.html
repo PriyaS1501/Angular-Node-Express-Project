@@ -1,0 +1,31 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="breadcrumb">
+                <h2>Dashboard</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="gray-bg p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div *ngFor="let u of usersData">
+                        <h3> Welcome "{{u.username}}" , You are successfully Signed In to your account,</h3>
+                        <h4> Now you can access your services.</h4>
+                        <hr>
+                        <button class="btn btn-primary m-2" routerLink="/admin/doctorlist"> <i class="fa fa-user-md"></i>
+                            Doctors</button>
+                        <button class="btn btn-primary m-2" routerLink="/admin/centrelist"> <i class="fa fa-hospital-o"></i>
+                            Centres</button>
+                        <button class="btn btn-primary m-2" routerLink="/admin/appointmentlist"> <i class="fa fa-file-text-o"></i>
+                            Appointments</button>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>

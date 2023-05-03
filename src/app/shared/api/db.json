@@ -1,0 +1,111 @@
+{
+  "Doctors": [
+    {
+      "id": 3,
+      "name": "Swapna Gandhe",
+      "qualification": "MBBS, DOMS",
+      "speciality": "Consultant - Phaco & General Ophthalmology",
+      "experience": "5",
+      "about": "She has performed 3000 SICS including topical SICS and 50 ECCE.\nShe also specializes in refractive surgeries like LASIK, PRK, Phakic IOL (ICL/IPCL), Multifocal IOL, toric IOL, Trifocal IOL",
+      "email": "swapna@ymail.com",
+      "contact": "8976777210",
+      "centre": "VASHI",
+      "OPDtimeAM": "10",
+      "OPDtimePM": "8",
+      "OPDdays": "Mon, Thu",
+      "gender": "female"
+    },
+    {
+      "id": 2,
+      "name": "Prasad Kamat",
+      "qualification": "MBBS, MS, FMRF",
+      "speciality": "Consultant - Vitreo-Retina & Uvea Surgeon",
+      "experience": "13",
+      "about": "Worked as Senior Retina Consultant at Contacare Eye Hospitals ( 2016 to 2018)\nExperience in more than 3000 Retina surgeries and more than 10,000 Retina procedures (lasers, intravitreal injections)\nPresented many papers and given talks at BOA, Maharashtra Ophthalmic Association annual conferences",
+      "email": "prasad@gmail.com",
+      "contact": "8976543210",
+      "centre": "Navi Mumbai",
+      "OPDtimeAM": "10",
+      "OPDtimePM": "8",
+      "OPDdays": "Mon, Tue, Wed",
+      "gender": "male"
+    },
+    {
+      "id": 4,
+      "name": "Brijlata Singh",
+      "qualification": "MBBS, MS",
+      "speciality": "Consultant - General Ophthalmologist",
+      "experience": "10",
+      "about": "He is Consultant - General Ophthalmologist",
+      "email": "Brijlata22@gmail.com",
+      "contact": "8784321467",
+      "centre": "Navi Mumbai",
+      "OPDtimeAM": "10",
+      "OPDtimePM": "8",
+      "OPDdays": "Mon, Thu, Fri",
+      "gender": "male"
+    }
+  ],
+  "Users": [
+    {
+      "id": 204,
+      "username": "Admin",
+      "password": "Admin@123$"
+    }
+  ],
+  "Centres": [
+    {
+      "id": 1,
+      "name": "VASHI",
+      "description": "Nulla consequat massa quis enim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.",
+      "address": "123 Hanway Extension, Milton Villa City, Uk",
+      "cemail": "vashi@example.com",
+      "ccontact": "(00) 123 456 789"
+    },
+    {
+      "id": 2,
+      "name": "SANGLI",
+      "description": "Nulla consequat massa quis enim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.",
+      "address": "Your Road Name, Your City, United of Kingdom",
+      "cemail": "sangali@gmail.com",
+      "ccontact": "(+84) 8001 7788 89"
+    }
+  ],
+  "Appointments": [
+    {
+      "id": 222,
+      "fname": "Priyanka",
+      "emailid": "priyanka@gmail.com",
+      "acontact": "1111111111",
+      "doa": "11/01/2000",
+      "gender": "female",
+      "preferredcentre": "mumbai",
+      "contactway": "phone",
+      "comment": "Nulla consequat massa quis enim. Cum sociis"
+    },
+    {
+      "fname": "wewc retete",
+      "emailid": "erwevr@gmail.com",
+      "acontact": "1111111111",
+      "doa": "2023-03-02",
+      "city": "rvtrtr",
+      "gender": "male",
+      "preferredcentre": "VASHI",
+      "contactway": true,
+      "comment": "dterg ",
+      "id": 223
+    },
+    {
+      "fname": "edr rfrf",
+      "emailid": "qq@gmail.com",
+      "acontact": "1111222233",
+      "doa": "2023-03-11",
+      "city": "dfrf",
+      "gender": "male",
+      "preferredcentre": "VASHI",
+      "contactway": false,
+      "comment": "dcfrfrdr",
+      "id": 224
+    }
+  ]
+}
